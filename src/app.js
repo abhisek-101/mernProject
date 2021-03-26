@@ -7,6 +7,8 @@ const bcrypt = require('bcryptjs');
 const app = express();
 const port = process.env.PORT || 3000;
 const User = require('./models/user');
+const cookieParser = require('cookie-parser');
+const auth = require('./middleware/auth')
 
 
 
@@ -18,14 +20,34 @@ app.set('view engine', 'hbs');
 app.set('views', views_path);
 hbs.registerPartials(partials_path);
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
     res.render("index");
 })
+app.get('/secret', auth, (req, res) => {
+    console.log(`This is the secret key : ${req.cookies.jwt}`);
+    res.render("secret");
+})
 
 app.get('/login', (req, res) => {
     res.render("login");
+})
+app.get('/logout', auth, async(req, res) => {
+    try {
+        req.user.tokens = req.user.tokens.filter((elem) => {
+                return elem.token !== req.token;
+            })
+            // req.user.tokens = [];
+
+        res.clearCookie("jwt");
+        console.log("Logout successfully");
+        await req.user.save();
+        res.render("login");
+    } catch (err) {
+        res.status(500).send(err);
+    }
 })
 
 app.get('/register', (req, res) => {
@@ -51,7 +73,12 @@ app.post('/login', async(req, res) => {
 
         const token = await userEmail.generateAuthToken();
 
-        console.log(token);
+        res.cookie("jwt", token.toString(), {
+            expires: new Date(Date.now() + 300000),
+            httpOnly: true
+        });
+
+
         if (isMatch) {
             console.log("login successful");
             console.log(userEmail);
@@ -83,6 +110,12 @@ app.post('/register', async(req, res) => {
             })
 
             const token = await employeeRegister.generateAuthToken();
+
+            res.cookie("jwt", token.toString(), {
+                expires: new Date(Date.now() + 30000),
+                httpOnly: true
+            });
+
             const result = await employeeRegister.save();
             res.status(201).render("login");
 
