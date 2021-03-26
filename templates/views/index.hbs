@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+        #myform {
+            width: 50%;
+            margin: auto;
+            margin-top: 60px;
+            border: 2px solid rgb(194, 184, 184);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 3px 3px 5px rgb(184, 178, 178), -3px -3px 5px rgb(184, 178, 178);
+        }
+    </style>
+</head>
+
+<body>
+    {{!-- //navbar --}}
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">TheModifiedRARA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+
+    {{!-- navbar ends --}}
+
+    {{!-- forms starts --}}
+    <div id="myform">
+        <form action="/register" method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputFName4">First Name</label>
+                    <input type="text" class="form-control" id="inputFName4" placeholder=" First Name" name="firstname"
+                        autocomplete="off">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputLName4">Last Name</label>
+                    <input type="text" class="form-control" id="inputLName4" placeholder="Last Name" name="lastname"
+                        autocomplete="off">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email"
+                        autocomplete="off">
+                </div>
+                <div class="form-row">
+
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" value="male" id="customRadioInline1" name="gender"
+                            class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline1">Male</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" value="female" id="customRadioInline2" name="gender"
+                            class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline2">Female
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputAge2">Age</label>
+                    <input type="number" class="form-control" id="inputAge2" placeholder="Age" name="age">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPhone2">Phone</label>
+                    <input type="text" class="form-control" id="inputPhone2" placeholder="123456789" name="phone">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Password</label>
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password"
+                        name="password">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputComfirmPassword4">Confirm Password</label>
+                    <input type="password" class="form-control" id="inputComfirmPassword4"
+                        placeholder="Confirm Password" name="cpassword">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+    {{!-- forms ends --}}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
